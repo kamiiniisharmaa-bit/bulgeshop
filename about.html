@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>bulgeShop · About Us</title>
+  <!-- Font Awesome 6 (free) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    }
+
+    body {
+      background: #f8f9fe;
+      color: #1a1f2e;
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* header / navbar (consistent) */
+    .navbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 0;
+      flex-wrap: wrap;
+      gap: 16px;
+      border-bottom: 1px solid #e6eaf2;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 1.8rem;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      color: #0b1a33;
+      text-decoration: none;
+    }
+
+    .logo i {
+      color: #2a7de1;
+      font-size: 2rem;
+    }
+
+    .logo span {
+      background: linear-gradient(135deg, #0b1a33 0%, #2a7de1 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      font-weight: 500;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: #2c3a4b;
+      font-size: 1rem;
+      transition: 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: #2a7de1;
+    }
+
+    .nav-icons {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      font-size: 1.3rem;
+    }
+
+    .nav-icons i {
+      cursor: pointer;
+      color: #1e2a3a;
+      transition: 0.2s;
+    }
+
+    .nav-icons i:hover {
+      color: #2a7de1;
+    }
+
+    .badge {
+      background: #2a7de1;
+      color: white;
+      border-radius: 30px;
+      padding: 0px 10px;
+      font-size: 0.7rem;
+      font-weight: 600;
+      margin-left: -10px;
+      vertical-align: top;
+    }
+
+    /* back link */
+    .back-link {
+      margin: 28px 0 10px;
+      display: inline-block;
+    }
+
+    .back-link a {
+      color: #2a7de1;
+      text-decoration: none;
+      font-weight: 500;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: 0.15s;
+      border-bottom: 2px solid transparent;
+    }
+
+    .back-link a:hover {
+      border-bottom-color: #2a7de1;
+    }
+
+    /* about card */
+    .about-card {
+      background: #ffffff;
+      border-radius: 32px;
+      padding: 44px 48px;
+      margin: 16px 0 40px;
+      box-shadow: 0 8px 28px rgba(0, 0, 0, 0.02), 0 2px 12px rgba(0, 10, 30, 0.04);
+      border: 1px solid #edf0f7;
+    }
+
+    .about-card h1 {
+      font-size: 2.4rem;
+      font-weight: 700;
+      color: #0b1a33;
+      letter-spacing: -0.02em;
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .about-card h1 i {
+      color: #2a7de1;
+      font-size: 2rem;
+    }
+
+    .about-subhead {
+      color: #4c5a72;
+      border-bottom: 1px solid #eaeef6;
+      padding-bottom: 18px;
+      margin-bottom: 28px;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .about-subhead span {
+      background: #eef3fc;
+      padding: 6px 16px;
+      border-radius: 60px;
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: #1f3a5f;
+    }
+
+    .about-section {
+      margin-bottom: 34px;
+    }
+
+    .about-section h2 {
+      font-size: 1.4rem;
+      font-weight: 650;
+      color: #0b1a33;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .about-section h2 i {
+      color: #2a7de1;
+      font-size: 1.3rem;
+      width: 28px;
+      text-align: center;
+    }
+
+    .about-section p {
+      color: #283349;
+      margin-bottom: 12px;
+    }
+
+    .about-section ul {
+      list-style: none;
+      padding-left: 8px;
+      margin: 10px 0 14px;
+    }
+
+    .about-section ul li {
+      padding: 6px 0 6px 32px;
+      position: relative;
+    }
+
+    .about-section ul li::before {
+      content: "▹";
+      color: #2a7de1;
+      font-weight: 700;
+      position: absolute;
+      left: 4px;
+      top: 6px;
+    }
+
+    .about-highlight {
+      background: #f5f8ff;
+      border-left: 4px solid #2a7de1;
+      padding: 16px 22px;
+      border-radius: 16px;
+      margin: 22px 0 10px;
+      color: #1f3146;
+      font-size: 0.98rem;
+    }
+
+    .about-highlight i {
+      color: #2a7de1;
+      margin-right: 10px;
+    }
+
+    /* team / values grid */
+    .values-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 24px;
+      margin: 20px 0 6px;
+    }
+
+    .value-item {
+      background: #f8faff;
+      border-radius: 20px;
+      padding: 22px 16px;
+      text-align: center;
+      border: 1px solid #eef2f9;
+      transition: 0.2s;
+    }
+
+    .value-item i {
+      font-size: 2rem;
+      color: #2a7de1;
+      margin-bottom: 10px;
+    }
+
+    .value-item h4 {
+      font-weight: 600;
+      color: #0b1a33;
+      margin-bottom: 4px;
+    }
+
+    .value-item p {
+      font-size: 0.9rem;
+      color: #4c5a72;
+      margin: 0;
+    }
+
+    .value-item:hover {
+      transform: translateY(-4px);
+      border-color: #cbd8ec;
+      box-shadow: 0 8px 18px rgba(0, 20, 50, 0.04);
+    }
+
+    .footer {
+      border-top: 1px solid #e2e6ef;
+      margin-top: 20px;
+      padding: 32px 0 24px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      color: #3a495e;
+      font-size: 0.9rem;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 28px;
+    }
+
+    .footer-links a {
+      text-decoration: none;
+      color: #3a495e;
+      transition: 0.15s;
+    }
+
+    .footer-links a:hover {
+      color: #0b1a33;
+    }
+
+    .footer-social i {
+      font-size: 1.3rem;
+      margin-left: 14px;
+      color: #3a495e;
+      transition: 0.2s;
+      cursor: pointer;
+    }
+
+    .footer-social i:hover {
+      color: #0b1a33;
+    }
+
+    /* responsive */
+    @media (max-width: 700px) {
+      .navbar {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 12px;
+      }
+      .nav-links {
+        flex-wrap: wrap;
+        justify-content: space-between;
+      }
+      .about-card {
+        padding: 28px 20px;
+      }
+      .about-card h1 {
+        font-size: 1.8rem;
+        flex-wrap: wrap;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .container {
+        padding: 0 16px;
+      }
+      .about-card {
+        padding: 22px 16px;
+      }
+      .about-section h2 {
+        font-size: 1.2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+
+  <!-- header (matches home, terms, privacy) -->
+  <header class="navbar">
+    <a href="#" class="logo">
+      <i class="fas fa-sync-alt"></i>
+      <span>bulgeShop</span>
+    </a>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="privacy.html">Privacy</a>
+      <a href="terms.html">Terms</a>
+      <a href="about.html">About Us</a>
+    </div>
+    <div class="nav-icons">
+      <i class="fas fa-search"></i>
+      <i class="fas fa-heart"></i>
+      <i class="fas fa-shopping-bag"></i>
+      <span class="badge">3</span>
+    </div>
+  </header>
+
+  <!-- back link to home -->
+  <div class="back-link">
+    <a href="#"><i class="fas fa-arrow-left"></i> Back to bulgeShop</a>
+  </div>
+
+  <!-- about main card -->
+  <div class="about-card">
+    <h1>
+      <i class="fas fa-store-alt"></i> About bulgeShop
+    </h1>
+    <div class="about-subhead">
+      <span><i class="fas fa-calendar-check"></i> Founded 2022</span>
+      <span><i class="fas fa-globe-americas"></i> Global · 15+ countries</span>
+    </div>
+
+    <!-- section 1: our story -->
+    <div class="about-section">
+      <h2><i class="fas fa-book-open"></i> Our story</h2>
+      <p>bulgeShop was born from a simple idea: <strong>style should feel effortless.</strong> What started as a small pop‑up store in downtown Melbourne has grown into a global destination for modern, quality-driven fashion. We believe that great design doesn't have to be complicated — it just needs to work for you.</p>
+      <p>Today, we curate a selection of timeless pieces, from everyday essentials to standout accessories, all chosen with care. Every product we offer is a reflection of our commitment to quality, authenticity, and the people who wear them.</p>
+      <div class="about-highlight">
+        <i class="fas fa-quote-left"></i> “We’re not just selling clothes — we’re building a community of individuals who express themselves through what they wear.”
+      </div>
+    </div>
+
+    <!-- section 2: values -->
+    <div class="about-section">
+      <h2><i class="fas fa-heart"></i> What we stand for</h2>
+      <p>Our values guide everything we do — from the brands we partner with to the way we treat our customers.</p>
+      <div class="values-grid">
+        <div class="value-item">
+          <i class="fas fa-leaf"></i>
+          <h4>Mindful</h4>
+          <p>We prioritize sustainable materials and ethical production.</p>
+        </div>
+        <div class="value-item">
+          <i class="fas fa-hands-helping"></i>
+          <h4>Inclusive</h4>
+          <p>Style for every body, every budget, every story.</p>
+        </div>
+        <div class="value-item">
+          <i class="fas fa-gem"></i>
+          <h4>Quality</h4>
+          <p>We test every product so you can trust what you buy.</p>
+        </div>
+        <div class="value-item">
+          <i class="fas fa-smile"></i>
+          <h4>Human</h4>
+          <p>Real people, real support — we're here for you.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- section 3: team -->
+    <div class="about-section">
+      <h2><i class="fas fa-users"></i> Meet the team</h2>
+      <p>bulgeShop is powered by a diverse group of creatives, strategists, and fashion lovers. From our design studio to our warehouse, every member shares a passion for making style accessible and enjoyable.</p>
+      <ul>
+        <li><strong>Alex Rivera</strong> — Founder & Creative Director</li>
+        <li><strong>Jordan Lee</strong> — Head of Product & Sourcing</li>
+        <li><strong>Samira Patel</strong> — Customer Experience Lead</li>
+        <li><strong>Taylor Kim</strong> — Operations & Logistics</li>
+        <li><strong>...and many more passionate people around the world.</strong></li>
+      </ul>
+    </div>
+
+    <!-- section 4: sustainability -->
+    <div class="about-section">
+      <h2><i class="fas fa-seedling"></i> Sustainability commitment</h2>
+      <p>We’re on a journey to reduce our environmental footprint. We partner with suppliers who share our values, use recycled packaging, and offset shipping emissions. It’s not perfect, but we’re constantly learning and improving.</p>
+      <div class="about-highlight">
+        <i class="fas fa-recycle"></i> <strong>Did you know?</strong> Over 60% of our collection uses eco‑friendly materials — and we’re aiming for 85% by 2028.
+      </div>
+    </div>
+
+    <!-- section 5: community -->
+    <div class="about-section" style="margin-bottom: 0;">
+      <h2><i class="fas fa-hand-sparkles"></i> Join the movement</h2>
+      <p>bulgeShop is more than a store — it’s a place to find inspiration, share your style, and connect with others. Follow us on social media, sign up for our newsletter, or visit our flagship store to experience the brand in person.</p>
+      <p style="margin-top: 12px; color:#2a7de1;">
+        <i class="fas fa-map-pin"></i> Flagship: 1010 Commerce Ave, Suite 200 · Melbourne, AU
+      </p>
+      <p style="color:#4f5f78; font-size:0.95rem;">
+        <i class="fas fa-envelope" style="color:#2a7de1;"></i> hello@bulgeShop.com &nbsp;·&nbsp; <i class="fas fa-phone-alt" style="color:#2a7de1;"></i> +1 (555) 247-8765
+      </p>
+    </div>
+
+  </div>
+
+  <!-- footer -->
+  <footer class="footer">
+    <div>© 2026 bulgeShop — style sync.</div>
+    <div class="footer-links">
+      <a href="#">About</a>
+      <a href="#">Help</a>
+      <a href="#">Returns</a>
+      <a href="#">Privacy</a>
+    </div>
+    <div class="footer-social">
+      <i class="fab fa-instagram"></i>
+      <i class="fab fa-twitter"></i>
+      <i class="fab fa-youtube"></i>
+    </div>
+  </footer>
+
+</div>
+
+<!-- all icons from fontawesome, no broken images -->
+</body>
+</html>

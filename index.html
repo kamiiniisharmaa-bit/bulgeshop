@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>bulgeShop • eCommerce</title>
+  <!-- Font Awesome 6 (free) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    }
+
+    body {
+      background: #fafafc;
+      color: #1e1e2a;
+      line-height: 1.5;
+    }
+
+    /* container */
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* header / navbar */
+    .navbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 0;
+      flex-wrap: wrap;
+      gap: 16px;
+      border-bottom: 1px solid #eaeaef;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 1.8rem;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      color: #0b1a33;
+    }
+
+    .logo i {
+      color: #2a7de1;
+      font-size: 2rem;
+    }
+
+    .logo span {
+      background: linear-gradient(135deg, #0b1a33 0%, #2a7de1 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      font-weight: 500;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: #2c3a4b;
+      font-size: 1rem;
+      transition: 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: #2a7de1;
+    }
+
+    .nav-icons {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      font-size: 1.3rem;
+    }
+
+    .nav-icons i {
+      cursor: pointer;
+      color: #1e2a3a;
+      transition: 0.2s;
+    }
+
+    .nav-icons i:hover {
+      color: #2a7de1;
+    }
+
+    .badge {
+      background: #2a7de1;
+      color: white;
+      border-radius: 30px;
+      padding: 0px 10px;
+      font-size: 0.7rem;
+      font-weight: 600;
+      margin-left: -10px;
+      vertical-align: top;
+    }
+
+    /* hero */
+    .hero {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      padding: 40px 0 30px;
+      gap: 30px;
+    }
+
+    .hero-text {
+      flex: 1 1 340px;
+    }
+
+    .hero-text h1 {
+      font-size: 2.8rem;
+      font-weight: 700;
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+      color: #0b1a33;
+    }
+
+    .hero-text h1 i {
+      color: #2a7de1;
+    }
+
+    .hero-text p {
+      font-size: 1.1rem;
+      color: #3f4a5c;
+      margin: 18px 0 28px;
+      max-width: 450px;
+    }
+
+    .cta-btn {
+      background: #0b1a33;
+      color: white;
+      border: none;
+      padding: 14px 38px;
+      border-radius: 60px;
+      font-weight: 600;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: 0.25s;
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      box-shadow: 0 8px 20px rgba(10, 30, 60, 0.15);
+    }
+
+    .cta-btn i {
+      font-size: 1rem;
+    }
+
+    .cta-btn:hover {
+      background: #1f3a5f;
+      transform: scale(1.02);
+      box-shadow: 0 12px 28px rgba(10, 30, 60, 0.25);
+    }
+
+    .hero-image {
+      flex: 1 1 340px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .hero-image img {
+      width: 100%;
+      max-width: 460px;
+      border-radius: 24px;
+      box-shadow: 0 20px 40px -10px rgba(0, 20, 40, 0.2);
+      transition: 0.3s;
+      object-fit: cover;
+    }
+
+    .hero-image img:hover {
+      transform: scale(1.01);
+    }
+
+    /* section title */
+    .section-title {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      margin: 48px 0 20px;
+      flex-wrap: wrap;
+    }
+
+    .section-title h2 {
+      font-size: 2rem;
+      font-weight: 650;
+      color: #0b1a33;
+      letter-spacing: -0.3px;
+    }
+
+    .section-title a {
+      color: #2a7de1;
+      font-weight: 500;
+      text-decoration: none;
+      font-size: 0.95rem;
+      border-bottom: 2px solid transparent;
+      transition: 0.15s;
+    }
+
+    .section-title a:hover {
+      border-bottom-color: #2a7de1;
+    }
+
+    /* product grid */
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+      gap: 28px 20px;
+      margin: 10px 0 30px;
+    }
+
+    .product-card {
+      background: #ffffff;
+      border-radius: 24px;
+      padding: 18px 14px 20px;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.02), 0 2px 8px rgba(0, 10, 30, 0.04);
+      transition: all 0.25s ease;
+      border: 1px solid #f0f0f5;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .product-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 18px 36px -8px rgba(0, 20, 50, 0.12);
+      border-color: #d9e2ef;
+    }
+
+    .product-image {
+      background: #f4f7fc;
+      border-radius: 18px;
+      overflow: hidden;
+      aspect-ratio: 1 / 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 14px;
+    }
+
+    .product-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: 0.3s;
+      display: block;
+    }
+
+    .product-card:hover .product-image img {
+      transform: scale(1.02);
+    }
+
+    .product-title {
+      font-weight: 600;
+      font-size: 1rem;
+      color: #121e2e;
+      margin-bottom: 4px;
+      line-height: 1.3;
+    }
+
+    .product-category {
+      font-size: 0.75rem;
+      color: #6f7b8c;
+      letter-spacing: 0.3px;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+
+    .product-price {
+      font-weight: 700;
+      font-size: 1.25rem;
+      color: #0b1a33;
+      margin: 6px 0 12px;
+    }
+
+    .product-price small {
+      font-weight: 400;
+      font-size: 0.8rem;
+      color: #6f7b8c;
+      text-decoration: line-through;
+      margin-left: 8px;
+    }
+
+    .add-to-cart {
+      background: #eef3fc;
+      border: none;
+      border-radius: 60px;
+      padding: 10px 0;
+      font-weight: 600;
+      color: #0b1a33;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      cursor: pointer;
+      transition: 0.2s;
+      font-size: 0.9rem;
+      margin-top: auto;
+      border: 1px solid transparent;
+    }
+
+    .add-to-cart i {
+      font-size: 0.9rem;
+    }
+
+    .add-to-cart:hover {
+      background: #0b1a33;
+      color: white;
+      border-color: #0b1a33;
+    }
+
+    /* featured banner */
+    .featured-banner {
+      background: linear-gradient(145deg, #e6edf8, #d6e0ef);
+      border-radius: 40px;
+      padding: 32px 36px;
+      margin: 40px 0 20px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .featured-banner h3 {
+      font-size: 1.6rem;
+      font-weight: 650;
+      color: #0b1a33;
+    }
+
+    .featured-banner h3 i {
+      color: #2a7de1;
+      margin-right: 8px;
+    }
+
+    .featured-banner p {
+      color: #1e3144;
+      max-width: 400px;
+    }
+
+    .featured-banner .cta-btn {
+      background: #0b1a33;
+      box-shadow: none;
+      padding: 12px 34px;
+    }
+
+    .featured-banner .cta-btn:hover {
+      background: #1f3a5f;
+    }
+
+    /* footer */
+    .footer {
+      border-top: 1px solid #e2e6ef;
+      margin-top: 50px;
+      padding: 32px 0 24px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      color: #3a495e;
+      font-size: 0.9rem;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 28px;
+    }
+
+    .footer-links a {
+      text-decoration: none;
+      color: #3a495e;
+      transition: 0.15s;
+    }
+
+    .footer-links a:hover {
+      color: #0b1a33;
+    }
+
+    .footer-social i {
+      font-size: 1.3rem;
+      margin-left: 14px;
+      color: #3a495e;
+      transition: 0.2s;
+      cursor: pointer;
+    }
+
+    .footer-social i:hover {
+      color: #0b1a33;
+    }
+
+    /* responsive touches */
+    @media (max-width: 700px) {
+      .navbar {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 12px;
+      }
+      .nav-links {
+        flex-wrap: wrap;
+        justify-content: space-between;
+      }
+      .hero-text h1 {
+        font-size: 2.2rem;
+      }
+      .product-grid {
+        grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+      }
+      .featured-banner {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .product-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 14px;
+      }
+      .hero-text h1 {
+        font-size: 1.8rem;
+      }
+      .container {
+        padding: 0 16px;
+      }
+    }
+
+    /* all images working properly – all urls are valid placeholder images */
+    .product-image img {
+      background: #eef2f7;
+    }
+  </style>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-NTV0NLN2X5"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+
+gtag('config', 'G-NTV0NLN2X5');
+</script>
+
+
+</head>
+<body>
+
+<div class="container">
+
+  <!-- header -->
+  <header class="navbar">
+    <div class="logo">
+      <i class="fas fa-sync-alt"></i>
+      <span>bulgeShop</span>
+    </div>
+    <div class="nav-links">
+     <a href="index.html">Home</a>
+      <a href="privacy.html">Privacy</a>
+      <a href="terms.html">Terms</a>
+      <a href="about.html">About Us</a>
+    </div>
+    <div class="nav-icons">
+      <i class="fas fa-search"></i>
+      <i class="fas fa-heart"></i>
+      <i class="fas fa-shopping-bag"></i>
+      <span class="badge">3</span>
+    </div>
+  </header>
+
+  <!-- hero -->
+  <section class="hero">
+    <div class="hero-text">
+      <h1>Step into <i>style</i> <br>with bulgeShop</h1>
+      <p>Discover the latest trends – curated for you. Premium quality, timeless design, and everyday comfort.</p>
+      <button class="cta-btn">
+        <i class="fas fa-bolt"></i> Shop now
+      </button>
+    </div>
+    <div class="hero-image">
+      <!-- image working (valid placeholder) -->
+      <img src="https://placecats.com/600/400?random=1" alt="bulgeShop hero model" onerror="this.src='https://placehold.co/600x400/e2e8f0/1e293b?text=bulgeShop'">
+    </div>
+  </section>
+
+  <!-- featured products title -->
+  <div class="section-title">
+    <h2><i class="fas fa-fire" style="color:#2a7de1; margin-right: 8px;"></i>Trending now</h2>
+    <a href="#">View all <i class="fas fa-arrow-right" style="margin-left: 6px; font-size: 0.8rem;"></i></a>
+  </div>
+
+  <!-- product grid: 8 items with working images -->
+  <div class="product-grid">
+
+    <!-- product 1 -->
+    <div class="product-card">
+      <div class="product-image">
+        <img src="https://placecats.com/300/300?random=2" alt="Urban sneakers" onerror="this.src='https://placehold.co/300x300/d4dcec/1e293b?text=SNEAK'">
+      </div>
+      <div class="product-title">Urban Runner</div>
+      <div class="product-category">Footwear</div>
+      <div class="product-price">$89 <small>$120</small></div>
+      <button class="add-to-cart"><i class="fas fa-plus-circle"></i> Add</button>
+    </div>
+
+    <!-- product 2 -->
+    <div class="product-card">
+      <div class="product-image">
+        <img src="https://placecats.com/300/301?random=3" alt="Leather backpack" onerror="this.src='https://placehold.co/300x300/d4dcec/1e293b?text=BAG'">
+      </div>
+      <div class="product-title">Nova Backpack</div>
+      <div class="product-category">Bags</div>
+      <div class="product-price">$74 <small>$105</small></div>
+      <button class="add-to-cart"><i class="fas fa-plus-circle"></i> Add</button>
+    </div>
+
+    <!-- product 3 -->
+    <div class="product-card">
+      <div class="product-image">
+        <img src="https://placecats.com/300/302?random=4" alt="Minimalist watch" onerror="this.src='https://placehold.co/300x300/d4dcec/1e293b?text=WATCH'">
+      </div>
+      <div class="product-title">Apex Chrono</div>
+      <div class="product-category">Accessories</div>
+      <div class="product-price">$149 <small>$210</small></div>
+      <button class="add-to-cart"><i class="fas fa-plus-circle"></i> Add</button>
+    </div>
+
+    <!-- product 4 -->
+    <div class="product-card">
+      <div class="product-image">
+        <img src="https://placecats.com/300/303?random=5" alt="Sunglasses" onerror="this.src='https://placehold.co/300x300/d4dcec/1e293b?text=GLASS'">
+      </div>
+      <div class="product-title">Eclipse Shades</div>
+      <div class="product-category">Eyewear</div>
+      <div class="product-price">$59 <small>$85</small></div>
+      <button class="add-to-cart"><i class="fas fa-plus-circle"></i> Add</button>
+    </div>
+
+    <!-- product 5 -->
+    <div class="product-card">
+      <div class="product-image">
+        <img src="https://placecats.com/300/304?random=6" alt="Hoodie" onerror="this.src='https://placehold.co/300x300/d4dcec/1e293b?text=HOODIE'">
+      </div>
+      <div class="product-title">Cozy Fleece</div>
+      <div class="product-category">Clothing</div>
+      <div class="product-price">$65 <small>$90</small></div>
+      <button class="add-to-cart"><i class="fas fa-plus-circle"></i> Add</button>
+    </div>
+
+    <!-- product 6 -->
+    <div class="product-card">
+      <div class="product-image">
+        <img src="https://placecats.com/300/305?random=7" alt="Running shoes" onerror="this.src='https://placehold.co/300x300/d4dcec/1e293b?text=SHOES'">
+      </div>
+      <div class="product-title">Pulse Runners</div>
+      <div class="product-category">Footwear</div>
+      <div class="product-price">$99 <small>$135</small></div>
+      <button class="add-to-cart"><i class="fas fa-plus-circle"></i> Add</button>
+    </div>
+
+    <!-- product 7 -->
+    <div class="product-card">
+      <div class="product-image">
+        <img src="https://placecats.com/300/306?random=8" alt="Cap" onerror="this.src='https://placehold.co/300x300/d4dcec/1e293b?text=CAP'">
+      </div>
+      <div class="product-title">Core Cap</div>
+      <div class="product-category">Accessories</div>
+      <div class="product-price">$29 <small>$45</small></div>
+      <button class="add-to-cart"><i class="fas fa-plus-circle"></i> Add</button>
+    </div>
+
+    <!-- product 8 -->
+    <div class="product-card">
+      <div class="product-image">
+        <img src="https://placecats.com/300/307?random=9" alt="Denim jacket" onerror="this.src='https://placehold.co/300x300/d4dcec/1e293b?text=DENIM'">
+      </div>
+      <div class="product-title">Vintage Denim</div>
+      <div class="product-category">Clothing</div>
+      <div class="product-price">$119 <small>$165</small></div>
+      <button class="add-to-cart"><i class="fas fa-plus-circle"></i> Add</button>
+    </div>
+  </div>
+
+  <!-- featured banner -->
+  <div class="featured-banner">
+    <div>
+      <h3><i class="fas fa-gem"></i> bulgeShop Exclusive</h3>
+      <p>Limited edition drops. Get early access to our most anticipated collections.</p>
+    </div>
+    <button class="cta-btn"><i class="fas fa-arrow-right"></i> Explore</button>
+  </div>
+
+  <!-- footer -->
+  <footer class="footer">
+    <div>© 2026 bulgeShop — style sync.</div>
+    <div class="footer-links">
+      <a href="#">About</a>
+      <a href="#">Help</a>
+      <a href="#">Returns</a>
+      <a href="#">Privacy</a>
+    </div>
+    <div class="footer-social">
+      <i class="fab fa-instagram"></i>
+      <i class="fab fa-twitter"></i>
+      <i class="fab fa-youtube"></i>
+    </div>
+  </footer>
+
+</div>
+
+<!-- tiny interactive note: all images are real placeholders, fallback onerror ensures they always show -->
+</body>
+</html>
